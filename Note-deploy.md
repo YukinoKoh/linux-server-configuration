@@ -1,15 +1,15 @@
 # Deploy the project
 This is a note to deploy a database project to the ubuntu linux server
-1. Set time zone to local UTC
-2. Install basics to deploy the project
-3. Clone the project from git repository
-4. Test Apache (create `app.wsgi`)
-5. Serve the project (modify `app.wsgi`)
-6. Install the related modules
-7. Set up Postgresql
-8. Modify the database path
-9. Modify the Oauth path
-10. Change file accessibility 
+1. [Set time zone to local UTC](#1-set-time-zone-to-local-utc)
+2. [Install basics to deploy the project](#2-install-basics-to-the-deploy-project)
+3. [Clone the project from git repository](#3-clone-the-project-from-git-repository)
+4. [Test Apache](#4-test-apache) (create `app.wsgi`)
+5. [Serve the project](#5-serve-the-project) (modify `app.wsgi`)
+6. [Install the related modules](#6-install-the-related-modules)
+7. [Set up Postgresql](#7-set-up-postgresql)
+8. [Modify the database path](#8-modify-the-database-path)
+9. [Modify the Oauth path](#9-modify-oauth-path)
+10. [Change file accessibility](#10-limit-file-accessibility) 
 
 # 1. Set time zone to local UTC
 1. `sudo dpkg-reconfigure tzdata`
