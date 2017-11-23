@@ -1,15 +1,39 @@
 This is a note to deploy a database project to the ubuntu linux server
+1. Set time zone to local UTC
+2. Install basics to deploy the project
+3. Clone the project from git repository
+4. Test Apache (create `app.wsgi`)
+5. Serve the project (modify `app.wsgi`)
+6. Install the related modules
+7. Set up Postgresql
+8. Modify the database path
+9. Modify the Oauth path
+10. Change file accessibility 
 
-### 1. Clone project under
-1. Clone the project under `/var/www/`
-2. Check if it's cloned
+# Set time zone to local UTC
+1. `sudo dpkg-reconfigure tzdata`
+2. Select city accordingly
+
+# Install basics to the deploy project
+1. Install Apache to serve a Python project
+- `sudo apt-get install apache2`: to install Apache
+- `sudo apache2ctl restart`: to restart Apache
+- Confirm it by visiting the IP address that the index is served from `var/www/html/index.html`.
+2. Install PostgreSQL for database
+- `sudo apt-get install postgresql`
+3. Install git
+- `sudo apt-get install git`
+
+# Clone the project from git repository
+1. Clone the project to `/var/www/`
+2. Check if it's been cloned
 ```
 ls /var/www/
 >> sfnd-catalog html
 ```
 
-## 2. Test Apache
-Test 'hello world' app
+# Test Apache
+#### Test 'hello world' app
 1. Create `app.wsgi` under `/var/www/sfnd-catalog`
 ```
 def application(environ, start_response):
@@ -28,7 +52,7 @@ WSGIScriptAlias / /var/www/fsnd-catalog/app.wsgi
 ``` 
 3. `sudo apache2ctl restart`: to restart
 
-## 3. Test flask app
+#### Test flask app
 1. Modify `app.wsgi` with `sample.py`
 ```
 mport sys
@@ -45,23 +69,22 @@ sudo apt-get install python-flask
 ```
 3. `sudo apache2ctl restart`: to restart
 
-## 4. Modify `app.wsgi` to serve the project
+#  Serve the project
 Modify `app.wsgi` to import app from `project.py`
 ```
 from project import app as application
 ```  
 
-## 5. Install the related modules
+# Install the related modules
 ```
 sudo apt-get install python-pip python-flask python-sqlalchemy python-psycopg2
 sudo pip install [MODULES]
 ```
 
-## 6. Set up Postgresql
+# Set up Postgresql
 Create psql database and user for the project
-1. Switch (log in) to sql user: `sudo -i -u postgres`
-- to log out `exit`
-2. start psql: `psql`
+1. Switch (log in) to sql user: `sudo -i -u postgres` (to log out: `exit)`
+2. start psql: `psql` (to quit: `\q`)
 3. Create psql user `catalog` with password `catalog` with login and createdb permission
 ```
 CREATE USER catalog WITH PASSWORD 'catalog';
@@ -103,7 +126,7 @@ GRANT ALL ON SCHEMA public TO catalog;
 - [psql commands](https://www.a2hosting.com/kb/developer-corner/postgresql/managing-postgresql-databases-and-users-from-the-command-line#Deleting-PostgreSQL-users)
 
 
-## 7. Modify the database path
+# Modify the database path
 1. Change the database path in `database_setup.py`, `initial_data.py`, and `common.py`
 ```
 engine = create_engine('postgresql://catalog:catalog@localhost/researchoption')
@@ -113,11 +136,11 @@ The basic syntax is `postgresql://username:password@host:port/database`
 2. Run `sudo python database_setup.py` and `sudo python initial_data.py` 
 
 
-## 8. Modify Oauth path 
+# Modify Oauth path 
 1. Change the oauth related json path to `/var/www/fsnd-catalog/fb_client.json` in `common.py`
 2. Change target site url to public IP at [Facebook developer site](https://developers.facebook.com/docs/facebook-login/web) 
 
-## 9. Change file accessibility 
+# Limit file accessibility 
 Change unnecessary file to serve the app unaccessable
 - `.git`, `researchoption.db`, `database_setup.py`, `initial_data.py`, `sample.py`, `README.md`, `.vagrant`, `Vagrantfile`, `.DS_Store`, and `*.pyc`
 ```
