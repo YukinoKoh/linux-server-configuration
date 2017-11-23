@@ -37,7 +37,7 @@ sudo ufw enable
 - Upgrade the package: `sudo apt-get upgrade`
 
 # Security 5. Manage user account for the server
-### 1. Create a new user account
+#### 1. Create a new user account
 ```
  sudo adduser [user name]
 ```
