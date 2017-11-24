@@ -30,7 +30,6 @@ The Details are written in [Note-deploy.md](Note-deploy.md)
 8. Modify the database path
 9. Modify the Oauth path
 10. Change file accessibility 
-(Step 4 is only for test.)
 ### Check the configuration changes
 1. Visit the public IP address from a browser.
 2. To check error, visit `/var/log/apache2/error.log`

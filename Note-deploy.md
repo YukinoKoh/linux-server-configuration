@@ -143,7 +143,7 @@ The basic syntax is `postgresql://username:password@host:port/database`
 
 # 10. Limit file accessibility 
 Change unnecessary file to serve the app unaccessable
-- `.git`, `researchoption.db`, `database_setup.py`, `initial_data.py`, `sample.py`, `README.md`, `.vagrant`, `Vagrantfile`, `.DS_Store`, and `*.pyc`
+- `.git`, `researchoption.db`, `initial_data.py`, `sample.py`, `README.md`, `.vagrant`, `Vagrantfile`, `.DS_Store`, and `*.pyc`
 ```
 sudo chmod 700 [file name]
 ```
