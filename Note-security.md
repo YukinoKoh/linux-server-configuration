@@ -35,6 +35,8 @@ sudo ufw enable
 - Check installed packages: `/etc/apt/sources.list`
 - Aware of the available update: `sudo apt-get update` 
 - Upgrade the package: `sudo apt-get upgrade`
+- Automatic updates: `sudo apt install unattended-upgrades`
+- [Automatic updates](https://help.ubuntu.com/lts/serverguide/automatic-updates.html)
 
 # Security 5. Manage user account for the server
 ### 1. Create a new user account
